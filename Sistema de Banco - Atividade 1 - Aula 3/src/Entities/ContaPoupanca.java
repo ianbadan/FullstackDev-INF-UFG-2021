@@ -1,11 +1,13 @@
 package Entities;
 
+import Entities.Enums.TipoContas;
+
 public class ContaPoupanca extends Conta{
 
     private double TxCorrecao;
 
-    public ContaPoupanca(int nrConta, double saldo, Pessoa cliente, double txCorrecao) {
-        super(nrConta, saldo, cliente);
+    public ContaPoupanca(int nrConta, double saldo, Pessoa cliente,, TipoContas tipo, double txCorrecao) {
+        super(nrConta, saldo, cliente, tipo);
         TxCorrecao = txCorrecao;
     }
 

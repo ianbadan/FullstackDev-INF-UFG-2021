@@ -1,11 +1,13 @@
 package Entities;
 
+import Entities.Enums.TipoContas;
+
 public class ContaEspecial extends Conta {
 
     private double Limite;
 
-    public ContaEspecial(int nrConta, double saldo, Pessoa cliente, double limite) {
-        super(nrConta, saldo,cliente);
+    public ContaEspecial(int nrConta, double saldo, Pessoa cliente, TipoContas tipo, double limite) {
+        super(nrConta, saldo,cliente, tipo);
         Limite = limite;
     }
 

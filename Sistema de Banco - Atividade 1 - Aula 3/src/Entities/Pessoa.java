@@ -5,7 +5,7 @@ public class Pessoa {
     private String Nome;
     private String Endereco;
 
-    public Pessoa(int id, String nome, String endereco) {
+    protected Pessoa(int id, String nome, String endereco) {
         Id = id;
         Nome = nome;
         Endereco = endereco;

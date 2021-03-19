@@ -1,18 +1,18 @@
 package Entities;
 
+import Entities.Enums.TipoContas;
+
 public class Conta {
     private int NrConta;
     private double Saldo;
     private Pessoa Cliente;
+    private TipoContas Tipo;
 
-    protected Conta(int nrConta, double saldo, Pessoa cliente) {
+    protected Conta(int nrConta, double saldo, Pessoa cliente, TipoContas tipo) {
         NrConta = nrConta;
         Saldo = saldo;
         Cliente = cliente;
-    }
-
-    public Conta abrirConta(int nrConta, double saldo, Pessoa cliente){
-        return new Conta(nrConta, saldo, cliente);
+        Tipo = tipo;
     }
 
     public Pessoa getCliente() {
@@ -25,6 +25,14 @@ public class Conta {
 
     public int getNrConta() {
         return NrConta;
+    }
+
+    public TipoContas getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(TipoContas tipo) {
+        Tipo = tipo;
     }
 
     public double getSaldo() {
@@ -50,7 +58,7 @@ public class Conta {
     }
 
     protected boolean temSaldo(double valor){
-        return Saldo > valor;
+        return Saldo >= valor;
     }
 
     public void depositar(double valor){
