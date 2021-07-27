@@ -1,5 +1,5 @@
-import Entities.*;
-import Entities.Enums.TipoContas;
+import Model.Enums.TipoContas;
+import Model.Entities.*;
 
 import java.util.ArrayList;
 import java.util.List;
