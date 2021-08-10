@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ad4838a7-0a5c-4d67-a9a0-999009496906" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Aula 2.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/business/HospedagemBusiness.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/business/HospedeBusiness.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/business/HotelBusiness.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/business/QuartoBusiness.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/ctrl/HospedagemCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/ctrl/HospedeCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/ctrl/HotelCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/ctrl/QuartoCtrl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/dao/DB.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/dao/HospedagemDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/dao/HospedeDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/dao/HotelDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/dao/QuartoDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/entities/Hospedagem.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/entities/Hospede.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/entities/Hotel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/entities/Quarto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/enums/CategoriaQuarto.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/exceptions/DbException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/exceptions/HospedagemException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/exceptions/HospedeException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/exceptions/HotelException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/br/ufg/inf/fs20211/exceptions/QuartoException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Aula 1/util/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/business/HospedagemBusiness.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/business/HospedeBusiness.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/business/HotelBusiness.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/business/QuartoBusiness.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/ctrl/HospedagemCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/ctrl/HospedeCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/ctrl/HotelCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/ctrl/QuartoCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/dao/DB.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/dao/HospedagemDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/dao/HospedeDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/dao/HotelDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/dao/QuartoDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/entities/Hospedagem.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/entities/Hospede.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/entities/Hotel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/entities/Quarto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/enums/CategoriaQuarto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/exceptions/DbException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/exceptions/HospedagemException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/exceptions/HospedeException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/exceptions/HotelException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/br/ufg/inf/fs20211/exceptions/QuartoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/util/App.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1vuxCZYy0hY3fooFUq7TKcyMECi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Aula 02" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="B:\GoogleDrive\Faculdade\__Cursando\Desenvolvimento Full Stack\FullstackDev-INF-UFG-2021\Aula 2" />
+      <recent name="B:\GoogleDrive\Faculdade\__Cursando\Desenvolvimento Full Stack\FullstackDev-INF-UFG-2021\Aula 2\src\br\ufg\inf\fs20211" />
+      <recent name="B:\GoogleDrive\Faculdade\__Cursando\Desenvolvimento Full Stack\FullstackDev-INF-UFG-2021\Aula 2\src" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="util.App" />
+      <module name="Aula 02" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Aula 02" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Aula 02" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.App" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ad4838a7-0a5c-4d67-a9a0-999009496906" name="Default Changelist" comment="" />
+      <created>1627425649719</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627425649719</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+</project>
