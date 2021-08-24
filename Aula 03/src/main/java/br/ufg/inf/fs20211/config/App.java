@@ -141,7 +141,7 @@ public class App {
         Hospede h2 = ctrl.findById(1);
         if(h2 != null){
             System.out.println("#ID original: " + h2);
-            h2.setNomeHospede(h2.getNomeHospede() + "Alterado");
+            h2.setNomeHospede(h2.getNomeHospede() + " Alterado");
             h2 = ctrl.update(h2);
             System.out.println("#ID alterado: " + h2);
         }
