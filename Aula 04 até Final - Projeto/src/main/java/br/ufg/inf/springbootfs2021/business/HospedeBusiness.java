@@ -5,8 +5,8 @@ import br.ufg.inf.springbootfs2021.entities.Hospede;
 import br.ufg.inf.springbootfs2021.exceptions.HospedeException;
 import br.ufg.inf.springbootfs2021.repository.HospedeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -22,9 +22,16 @@ public class HospedeBusiness {
         return repository.findAll();
     }
 
+    public Page<Hospede> paginator(Pageable pageable){
+        return repository.findAll(pageable);
+    }
+
     public Hospede findById(Integer id){
         Optional<Hospede> retorno= repository.findById(id);
-        return retorno.get();
+        if(retorno.isPresent()){
+            return retorno.get();
+        }
+        return null;
     }
 
     public Hospede insert(Hospede hospede) throws HospedeException {

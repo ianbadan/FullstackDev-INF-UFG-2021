@@ -1,20 +1,19 @@
 package br.ufg.inf.springbootfs2021;
 
-import br.ufg.inf.springbootfs2021.entities.Hospedagem;
-import br.ufg.inf.springbootfs2021.entities.Hospede;
-import br.ufg.inf.springbootfs2021.entities.Hotel;
-import br.ufg.inf.springbootfs2021.entities.Quarto;
+import br.ufg.inf.springbootfs2021.entities.*;
 import br.ufg.inf.springbootfs2021.enums.CategoriaQuarto;
-import br.ufg.inf.springbootfs2021.repository.HospedagemRepository;
-import br.ufg.inf.springbootfs2021.repository.HospedeRepository;
-import br.ufg.inf.springbootfs2021.repository.HotelRepository;
-import br.ufg.inf.springbootfs2021.repository.QuartoRepository;
+import br.ufg.inf.springbootfs2021.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 @Configuration
 @Profile("dev")
@@ -29,12 +28,29 @@ public class Config implements CommandLineRunner {
     private HospedeRepository hospedeRepository;
     @Autowired
     private HospedagemRepository hospedagemRepository;
+    @Autowired
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private RegraRepository regraRepository;
 
     @Override
     public void run(String... args) throws Exception {
         /*
         * INSERIR DADOS INICIAS NO BANCO DE DADOS
         * */
+
+        String[] tipoH = new String[]{"Hotel", "Pousada", "Resort", "Hostel", "Pensão"};
+        String[] nomeH = new String[]{"dos papagaios", "da cidade", "de esquina", "top de linha", "dos legais"};
+        String[] localH = new String[]{"Goiania", "Goiás Velhos", "Rio grande do sul", "Maragogi", "Tamandaré"};
+        for(int i = 0; i<100; i++){
+            hotelRepository.save(new Hotel(
+                    null,
+                    tipoH[new Random().nextInt(5)] + " " + nomeH[new Random().nextInt(5)],
+                    localH[new Random().nextInt(5)],
+                    new Random().nextInt(5)+1
+            ));
+        }
+
 
         Hotel ht1 = new Hotel(null, "Castros Park Hotel","Av. República do Líbano, 1520 - St. Oeste, Goiânia - GO, 74115-030",5);
         Hotel ht2 = new Hotel(null,"Hotel Aldeia Cerrado Pousada","R. 1122, 220 - Quadra 220, Lote 04 - St. Marista, Goiânia - GO, 74175-110",4);
@@ -71,5 +87,24 @@ public class Config implements CommandLineRunner {
         hospedagemRepository.save(h1);
         hospedagemRepository.save(h2);
         hospedagemRepository.save(h3);
+
+        Regra r1 = regraRepository.save(new Regra("ADMIN"));
+        Regra r2 = regraRepository.save(new Regra("USER"));
+        Regra r3 = regraRepository.save(new Regra("GUEST"));
+
+        List<Regra> regras = new ArrayList<Regra>();
+
+        regras.add(r1);
+        regras.add(r2);
+
+        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        usuarioRepository.save(new Usuario("ian", "Ian Badan", encoder.encode("1234"), regras));
+
+        regras = new ArrayList<Regra>();
+
+        regras.add(r2);
+        regras.add(r3);
+
+        usuarioRepository.save(new Usuario("jose", "Jose Silva", encoder.encode("4321"), regras));
     }
 }

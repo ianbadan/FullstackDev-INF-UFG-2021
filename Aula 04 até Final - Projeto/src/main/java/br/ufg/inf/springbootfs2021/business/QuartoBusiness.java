@@ -9,6 +9,8 @@ import br.ufg.inf.springbootfs2021.exceptions.QuartoException;
 import br.ufg.inf.springbootfs2021.repository.HotelRepository;
 import br.ufg.inf.springbootfs2021.repository.QuartoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,9 +29,16 @@ public class QuartoBusiness {
         return repository.findAll();
     }
 
+    public Page<Quarto> paginator(Pageable pageable){
+        return repository.findAll(pageable);
+    }
+
     public Quarto findById(Integer id){
         Optional<Quarto> retorno= repository.findById(id);
-        return retorno.get();
+        if(retorno.isPresent()){
+            return retorno.get();
+        }
+        return null;
     }
 
     public Quarto insert(Quarto quarto) throws QuartoException {

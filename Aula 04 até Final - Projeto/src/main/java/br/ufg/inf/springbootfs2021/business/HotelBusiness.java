@@ -4,6 +4,8 @@ import br.ufg.inf.springbootfs2021.entities.Hotel;
 import br.ufg.inf.springbootfs2021.exceptions.HotelException;
 import br.ufg.inf.springbootfs2021.repository.HotelRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,9 +33,16 @@ public class HotelBusiness {
         return repository.findAll();
     }
 
+    public Page<Hotel> paginator(Pageable pageable){
+        return repository.findAll(pageable);
+    }
+
     public Hotel findById(Integer id){
         Optional<Hotel> retorno= repository.findById(id);
-        return retorno.get();
+        if(retorno.isPresent()){
+            return retorno.get();
+        }
+        return null;
     }
 
     public Hotel insert(Hotel hotel) throws HotelException{

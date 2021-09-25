@@ -7,8 +7,8 @@ import br.ufg.inf.springbootfs2021.entities.Quarto;
 import br.ufg.inf.springbootfs2021.exceptions.HospedagemException;
 import br.ufg.inf.springbootfs2021.repository.HospedagemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -24,9 +24,16 @@ public class HospedagemBusiness {
         return repository.findAll();
     }
 
+    public Page<Hospedagem> paginator(Pageable pageable){
+        return repository.findAll(pageable);
+    }
+
     public Hospedagem findById(Integer id){
         Optional<Hospedagem> retorno= repository.findById(id);
-        return retorno.get();
+        if(retorno.isPresent()){
+            return retorno.get();
+        }
+        return null;
     }
 
     public Hospedagem insert(Hospedagem hospedagem) throws HospedagemException {
