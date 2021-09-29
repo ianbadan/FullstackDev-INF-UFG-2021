@@ -29,84 +29,77 @@ var negative = false
 
 btAdd.addEventListener('click', function(){
     decimal = false;
-    if(op == null){
+    if(num1 != 0){
+        if(op == null){
         op = "+";
         addDisplay("+");
-    } else{
+        } else{
         var temp = display.textContent.substring(0 , display.textContent.length-1);
         display.textContent = '';
         op = "+";
         addDisplay(temp + "+");
+        }
     }
 });
+
 btSub.addEventListener('click', function(){
     decimal = false;
     if(num1 == 0){
-        addDisplay("-");
+        setDisplay("-");
         negative = true;
     } else if(op == null){
         op = "-";
         addDisplay("-");
     } else{
-        if(display.textContent.length == 1){
-            var temp = display.textContent;
-        } else{
-            var temp = display.textContent.substring(0 , display.textContent.length-1);
-        }
-
+        var temp = display.textContent.substring(0 , display.textContent.length-1);
         display.textContent = '';
         op = "-";
         addDisplay(temp+"-");
     }
 })
+
 btMul.addEventListener('click',function () {
     decimal = false;
-    if(op == null){
-        op = "*";
-        addDisplay("*");
-    } else{
-        if(display.textContent.length == 1){
-            var temp = display.textContent;
+    if(num1 != 0){
+        if(op == null){
+            op = "*";
+            addDisplay("*");
         } else{
             var temp = display.textContent.substring(0 , display.textContent.length-1);
+            display.textContent = '';
+            op = "*";
+            addDisplay(temp+"*");
         }
-        display.textContent = '';
-        op = "*";
-        addDisplay(temp+"*");
+    }
+})
+
+btDiv.addEventListener('click', function() {
+    decimal = false;
+    if(num1 != 0){
+        if(op == null){
+            op = "/";
+            addDisplay("/");   
+        } else{
+            var temp = display.textContent.substring(0 , display.textContent.length-1);
+            display.textContent = '';
+            op = "/";
+            addDisplay(temp+"/"); 
+        }
     }
 
 })
-btDiv.addEventListener('click', function() {
-    decimal = false;
-    if(op == null){
-        op = "/";
-        addDisplay("/");   
-    } else{
-        if(display.textContent.length == 1){
-            var temp = display.textContent;
-        } else{
-            var temp = display.textContent.substring(0 , display.textContent.length-1);
-        }
-        display.textContent = '';
-        op = "/";
-        addDisplay(temp+"/"); 
-    }
-})
 btPonto.addEventListener('click', function() {
     decimal = false;
-    if(op == null){
-        op = "%";
-        addDisplay("%");
-    } else{
-        if(display.textContent.length == 1){
-            var temp = display.textContent;
+    if(num1 != 0){
+        if(op == null){
+            op = "%";
+            addDisplay("%");
         } else{
             var temp = display.textContent.substring(0 , display.textContent.length-1);
+            display.textContent = '';
+            op = "%";
+            addDisplay(temp+"%");
         }
-        
-        display.textContent = '';
-        op = "%";
-        addDisplay(temp+"%");
     }
 })
 
@@ -232,7 +225,7 @@ function subtracao(){
 
 function multiplicacao(params) {
     var temp = num1 * num2;
-    setDisplay(temp );
+    setDisplay(temp);
     return temp;
 }
 
@@ -282,4 +275,5 @@ function reset(){
     display.textContent = '';
     btResut.disabled = true;
     decimal = false;
+    negative = false;
 }
