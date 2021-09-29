@@ -25,33 +25,90 @@ var resultado = null;
 var concluido = false;
 var decimal = false;
 var display = document.querySelector('.display');
+var negative = false
 
 btAdd.addEventListener('click', function(){
     decimal = false;
-    op = "+";
-    addDisplay("+");
+    if(op == null){
+        op = "+";
+        addDisplay("+");
+    } else{
+        var temp = display.textContent.substring(0 , display.textContent.length-1);
+        display.textContent = '';
+        op = "+";
+        addDisplay(temp + "+");
+    }
 });
 btSub.addEventListener('click', function(){
     decimal = false;
-    op = "-";
-    addDisplay("-");
+    if(num1 == 0){
+        addDisplay("-");
+        negative = true;
+    } else if(op == null){
+        op = "-";
+        addDisplay("-");
+    } else{
+        if(display.textContent.length == 1){
+            var temp = display.textContent;
+        } else{
+            var temp = display.textContent.substring(0 , display.textContent.length-1);
+        }
+
+        display.textContent = '';
+        op = "-";
+        addDisplay(temp+"-");
+    }
 })
 btMul.addEventListener('click',function () {
     decimal = false;
-    op = "*";
-    addDisplay("*");
+    if(op == null){
+        op = "*";
+        addDisplay("*");
+    } else{
+        if(display.textContent.length == 1){
+            var temp = display.textContent;
+        } else{
+            var temp = display.textContent.substring(0 , display.textContent.length-1);
+        }
+        display.textContent = '';
+        op = "*";
+        addDisplay(temp+"*");
+    }
+
 })
 btDiv.addEventListener('click', function() {
     decimal = false;
-    op = "/";
-    addDisplay("/");   
+    if(op == null){
+        op = "/";
+        addDisplay("/");   
+    } else{
+        if(display.textContent.length == 1){
+            var temp = display.textContent;
+        } else{
+            var temp = display.textContent.substring(0 , display.textContent.length-1);
+        }
+        display.textContent = '';
+        op = "/";
+        addDisplay(temp+"/"); 
+    }
 })
 btPonto.addEventListener('click', function() {
     decimal = false;
-    op = "%";
-    addDisplay("%");
+    if(op == null){
+        op = "%";
+        addDisplay("%");
+    } else{
+        if(display.textContent.length == 1){
+            var temp = display.textContent;
+        } else{
+            var temp = display.textContent.substring(0 , display.textContent.length-1);
+        }
+        
+        display.textContent = '';
+        op = "%";
+        addDisplay(temp+"%");
+    }
 })
-
 
 
 bt0.addEventListener('click', function(){
@@ -97,23 +154,28 @@ bt9.addEventListener('click', function(){
 
 function addCalc(n){
     if(concluido){
-        reset();
-        concluido = false;
+        if(op == null)
+        {
+            reset();
+            concluido = false;
+        }
     }
 
     if(op == null){
         if(decimal){
-            num1 += + n/10;
+            num1 += n/10;
         }else{
             num1 = num1*10 + n;
         }
+        console.log(num1);
     }else{
         if(decimal){
-            num2 += + n/10;
+            num2 += n/10;
         }else{
             num2 = num2*10 + n;
         }
     }
+
 
     if(op == null){
         btResut.disabled = true;
@@ -123,43 +185,62 @@ function addCalc(n){
 }
 
 btResut.addEventListener('click', function(){
+    if(negative == true){
+        num1 = num1 * (-1);
+        negative = false;
+    }
     concluido = true;
     switch (op){
         case "+" :
-            soma();
+            num1 = soma();
             break;
         case "-":
-            subtracao();
+            num1 = subtracao();
             break;
         case "*":
-            multiplicacao();
+            num1 =multiplicacao();
             break;
         case "/":
-            divisao();
+            num1 = divisao();
             break;
         case "%":
-            resto();
+            num1 = resto();
             break;
     }
+    op = null;
+    num2 = 0;
 })
 
 
 function soma(){
-    setDisplay(num1 + num2);
+    var temp = num1 + num2;
+    setDisplay(temp);
+    return temp;
 }
 
 function subtracao(){
-    setDisplay(num1 - num2);
-    
+    var temp;
+    if(num1 < 0){
+        temp = (num1 + (num2 * -1));
+    }else {
+        temp = num1 - num2;
+    }
+    setDisplay(temp);
+    return temp;
 }
+    
 
 function multiplicacao(params) {
-    setDisplay(num1 * num2);
+    var temp = num1 * num2;
+    setDisplay(temp );
+    return temp;
 }
 
 function divisao(params) {
     if(num2 != 0){
-        setDisplay(num1 / num2);
+        var temp = num1 / num2;
+        setDisplay(temp );
+        return temp;
     } else {
         setDisplay("Erro");
     }
@@ -167,14 +248,16 @@ function divisao(params) {
 
 function resto(params) {
     if(num2 != 0){
-        setDisplay(num1 % num2);
+        var temp = num1 % num2;
+        setDisplay(temp);
+        return temp;
     } else {
         setDisplay("Erro");
     }
 }
 
 function addDisplay(n){
-    console.log(display.textContent.length);
+    //console.log(display.textContent.length);
     if(display.textContent.length < 12){
         display.textContent += n; 
     }
