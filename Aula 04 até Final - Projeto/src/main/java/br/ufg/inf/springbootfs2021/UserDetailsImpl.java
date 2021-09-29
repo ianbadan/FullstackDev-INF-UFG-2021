@@ -23,9 +23,9 @@ public class UserDetailsImpl implements UserDetails{
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> auths = new ArrayList<>();
         for(Regra r : usuario.getRegras()) {
-            System.out.println(r);
             auths.add(new SimpleGrantedAuthority("ROLE_"+r.getRegra()));
         }
+        System.out.println( auths.toString());
         return auths;
     }
 

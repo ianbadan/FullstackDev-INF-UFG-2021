@@ -1,0 +1,66 @@
+html {
+    font-family: sans-serif;
+    text-align: center;
+}
+
+body {
+    width: 50%;
+    max-width: 340px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
+.ultimosResultados {
+    color: white;
+    padding: 3px;
+}
+
+.corpo {
+    border: #000 solid 1px;
+    padding: 0px 20px 20px 20px;
+    border-radius: 5px;
+    background-color: rgb(117, 200, 211);
+}
+button{
+    border: 1px solid;
+    border-radius: 5px;
+    font-size: 1.5rem;
+}
+.botoes button {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+}
+
+button:hover{
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.24), 0 4px 8px 0 rgba(0,0,0,0.19)
+ }
+
+.btResut {
+    width: 285px;
+    height: 60px;
+    margin: 5px;
+    border: #000 solid 1px;
+    background-color:red;
+    color: white;
+}
+
+
+.display{
+    width: 240px;
+    height: 50px;
+    border: #000 solid 1px;
+    margin: 8px;
+    text-align: right;
+    align-items: center;
+    font-family: "digital-7";
+    font-size: 2rem;
+    padding: 20px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 4px;
+}
+
+.azul{
+    /*background-color: DodgerBlue;*/
+}

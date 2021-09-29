@@ -6,7 +6,6 @@ import br.ufg.inf.springbootfs2021.business.HospedagemBusiness;
 import br.ufg.inf.springbootfs2021.business.HospedeBusiness;
 import br.ufg.inf.springbootfs2021.business.QuartoBusiness;
 import br.ufg.inf.springbootfs2021.entities.Hospedagem;
-import br.ufg.inf.springbootfs2021.entities.Hotel;
 import br.ufg.inf.springbootfs2021.exceptions.HospedagemException;
 import br.ufg.inf.springbootfs2021.Messages;
 import org.springframework.beans.factory.annotation.Autowired;

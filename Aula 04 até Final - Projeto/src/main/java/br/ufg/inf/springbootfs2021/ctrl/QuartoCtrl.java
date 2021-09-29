@@ -70,7 +70,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Quarto>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @PostMapping
     public ResponseEntity<Quarto> insert(@RequestBody Quarto quarto) {
         HttpHeaders headers = new HttpHeaders();
@@ -90,7 +90,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Quarto>(quarto, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @PutMapping
     public ResponseEntity<Quarto> update(@RequestBody Quarto quarto) {
         HttpHeaders headers = new HttpHeaders();
@@ -109,7 +109,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Quarto>(quarto, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();

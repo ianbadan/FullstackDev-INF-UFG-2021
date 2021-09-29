@@ -103,7 +103,7 @@ public class HospedeCtrl {
         return new ResponseEntity<Hospede>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
