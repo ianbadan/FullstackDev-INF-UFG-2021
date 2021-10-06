@@ -1,0 +1,54 @@
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64" fixedBottomGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/">
+                <i class="material-icons">home</i>
+                Inicio
+            </a>
+            <a mat-list-item routerLink="/disciplinas">
+                <i class="material-icons">book</i>
+                Disciplina
+            </a>
+            <a mat-list-item routerLink="/pessoas">
+                <i class="material-icons">person</i>
+                Pessoa
+            </a>
+            <a mat-list-item routerLink="/professores">
+                <i class="material-icons">local_library</i>
+                Professor
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content ">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<mat-sidenav-container class="container">
+    <mat-sidenav class="sidenav" mode="side" opened fixedInViewport="true" fixedTopGap="64" fixedBottomGap="64">
+        <mat-nav-list class="nav-list">
+            <a mat-list-item routerLink="/">
+                <i class="material-icons">home</i>
+                Início
+            </a>
+            <a mat-list-item routerLink="/hoteis">
+                <i class="material-icons">apartment</i>
+                Hoteis
+            </a>
+            <a mat-list-item routerLink="/quartos">
+                <i class="material-icons">bed</i>
+                Quartos
+            </a>
+            <a mat-list-item routerLink="/hospedes">
+                <i class="material-icons">perm_identity</i>
+                Hóspedes
+            </a>
+            <a mat-list-item routerLink="/hospedagens">
+                <i class="material-icons">event</i>
+                Hospedagens
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="content">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>
