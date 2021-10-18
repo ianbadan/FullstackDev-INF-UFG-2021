@@ -27,5 +27,5 @@ public interface QuartoRepository extends JpaRepository<Quarto, Integer> {
     public List<Quarto> findByIntervaloPrecoDiaria(@Param("precoMinimo") Double precoMinimo, @Param("precoMaximo") Double precoMaximo);
 
     @Query("SELECT q FROM Quarto q WHERE q.hotel = :hotel")
-    public List<Quarto> findByIdHotel(@Param("hotel") Hotel hotel);
+    public List<Quarto> findByHotel(@Param("hotel") Hotel hotel);
 }

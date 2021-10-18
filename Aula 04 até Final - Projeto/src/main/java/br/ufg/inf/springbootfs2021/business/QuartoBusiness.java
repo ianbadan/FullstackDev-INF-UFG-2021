@@ -43,6 +43,7 @@ public class QuartoBusiness {
 
     public Quarto insert(Quarto quarto) throws QuartoException {
         this.validaQuarto(quarto);
+        System.out.println(quarto);
         return repository.save(quarto);
     }
 
@@ -76,8 +77,8 @@ public class QuartoBusiness {
         return repository.findByIntervaloPrecoDiaria(precoMinimo, precoMaximo);
     }
 
-    public List<Quarto> findByIdHotel(Hotel hotel){
-        return repository.findByIdHotel(hotel);
+    public List<Quarto> findByHotel(Hotel hotel){
+        return repository.findByHotel(hotel);
     }
 
     public void validaQuarto(Quarto quarto) throws QuartoException{

@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.security.crypto.factory.PasswordEncoderFactories;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,8 +30,8 @@ public class Config implements CommandLineRunner {
     private HospedagemRepository hospedagemRepository;
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    private RegraRepository regraRepository;
+    //@Autowired
+    //private RegraRepository regraRepository;
 
     @Override
     public void run(String... args) throws Exception {
@@ -42,7 +42,7 @@ public class Config implements CommandLineRunner {
         String[] tipoH = new String[]{"Hotel", "Pousada", "Resort", "Hostel", "Pensão"};
         String[] nomeH = new String[]{"dos papagaios", "da cidade", "de esquina", "top de linha", "dos legais"};
         String[] localH = new String[]{"Goiania", "Goiás Velhos", "Rio grande do sul", "Maragogi", "Tamandaré"};
-        for(int i = 0; i<100; i++){
+        for(int i = 0; i<20; i++){
             hotelRepository.save(new Hotel(
                     null,
                     tipoH[new Random().nextInt(5)] + " " + nomeH[new Random().nextInt(5)],
@@ -51,14 +51,6 @@ public class Config implements CommandLineRunner {
             ));
         }
 
-
-        Hotel ht1 = new Hotel(null, "Castros Park Hotel","Av. República do Líbano, 1520 - St. Oeste, Goiânia - GO, 74115-030",5);
-        Hotel ht2 = new Hotel(null,"Hotel Aldeia Cerrado Pousada","R. 1122, 220 - Quadra 220, Lote 04 - St. Marista, Goiânia - GO, 74175-110",4);
-        Hotel ht3 = new Hotel(null, "Sun Square Suítes Hotel bytb_quartotb_hotel","R. 9, 1053 - St. Oeste, Goiânia - GO, 74120-010",3);
-
-        hotelRepository.save(ht1);
-        hotelRepository.save(ht2);
-        hotelRepository.save(ht3);
 
 
         Quarto q1 = new Quarto(null,hotelRepository.findById(1).get(), CategoriaQuarto.get(2),3,120,240.00);
@@ -88,23 +80,24 @@ public class Config implements CommandLineRunner {
         hospedagemRepository.save(h2);
         hospedagemRepository.save(h3);
 
-        Regra r1 = regraRepository.save(new Regra("ADMIN"));
-        Regra r2 = regraRepository.save(new Regra("USER"));
-        Regra r3 = regraRepository.save(new Regra("GUEST"));
 
-        List<Regra> regras = new ArrayList<Regra>();
+       // Regra r1 = regraRepository.save(new Regra("ADMIN"));
+        //Regra r2 = regraRepository.save(new Regra("USER"));
+        //Regra r3 = regraRepository.save(new Regra("GUEST"));
 
-        regras.add(r1);
-        regras.add(r2);
+        //List<Regra> regras = new ArrayList<Regra>();
 
-        PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        usuarioRepository.save(new Usuario("ian", "Ian Badan", encoder.encode("1234"), regras));
+        //regras.add(r1);
+        //regras.add(r2);
 
-        regras = new ArrayList<Regra>();
+        //PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        usuarioRepository.save(new Usuario("ian", "Ian Badan", "1234"));
 
-        regras.add(r2);
-        regras.add(r3);
+        //regras = new ArrayList<Regra>();
 
-        usuarioRepository.save(new Usuario("jose", "Jose Silva", encoder.encode("4321"), regras));
+        //regras.add(r2);
+        //regras.add(r3);
+
+        usuarioRepository.save(new Usuario("jose", "Jose Silva", "4321"));
     }
 }

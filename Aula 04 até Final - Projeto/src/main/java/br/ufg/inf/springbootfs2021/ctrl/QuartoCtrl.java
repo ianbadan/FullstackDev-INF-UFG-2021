@@ -14,14 +14,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
 import java.util.ArrayList;
 import java.util.List;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value = "quartos")
 public class QuartoCtrl {
@@ -31,7 +31,7 @@ public class QuartoCtrl {
     @Autowired
     HotelBusiness hotelBusiness;
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<List<Quarto>> findAll(){
         HttpHeaders headers = new HttpHeaders();
@@ -50,7 +50,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Quarto> findById(@PathVariable Integer id) {
         Quarto retorno = new Quarto();
@@ -70,7 +70,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Quarto>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @PostMapping
     public ResponseEntity<Quarto> insert(@RequestBody Quarto quarto) {
         HttpHeaders headers = new HttpHeaders();
@@ -81,16 +81,18 @@ public class QuartoCtrl {
             headers.add("message", Messages.get("0201"));
         } catch (QuartoException e){
             headers.add("message", Messages.get(e.getMessage()));
+            System.out.println(e.getMessage());
             status = HttpStatus.BAD_REQUEST;
         } catch (Exception e){
             headers.add("message", Messages.get("0202"));
+            System.out.println("Erro no Servidor: " + quarto.toString());
             status = HttpStatus.INTERNAL_SERVER_ERROR;
         }
 
         return new ResponseEntity<Quarto>(quarto, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @PutMapping
     public ResponseEntity<Quarto> update(@RequestBody Quarto quarto) {
         HttpHeaders headers = new HttpHeaders();
@@ -109,7 +111,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Quarto>(quarto, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
@@ -125,7 +127,7 @@ public class QuartoCtrl {
         return new ResponseEntity<Void>(headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/categoriaquarto/{id}")
     public ResponseEntity<List<Quarto>> findByCategoriaQuarto(@PathVariable Integer id) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -144,7 +146,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/qtdleitos/{qtd}")
     public ResponseEntity<List<Quarto>> findByQtdLeito(@PathVariable Integer qtd) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -164,7 +166,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/nrquarto/{nrQuarto}")
     public ResponseEntity<List<Quarto>> findByNumeroQuarto(@PathVariable Integer nrQuarto) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -184,7 +186,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/precodiaria/{precoDiaria}")
     public ResponseEntity<List<Quarto>> findByPrecoDiaria(@PathVariable Double precoDiaria) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -204,7 +206,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/intervalopreco/{precoMinimo}/{precoMaximo}")
     public ResponseEntity<List<Quarto>> findByIntervaloPrecoDiaria(@PathVariable Double precoMinimo, @PathVariable Double precoMaximo) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -224,7 +226,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/idhotel/{id}")
     public ResponseEntity<List<Quarto>> findByIdHotel(@PathVariable Integer id) {
         List<Quarto> list = new ArrayList<Quarto>();
@@ -232,7 +234,7 @@ public class QuartoCtrl {
         HttpHeaders headers = new HttpHeaders();
         HttpStatus status = HttpStatus.OK;
         try{
-            list = business.findByIdHotel(hotelBusiness.findById(id));
+            list = business.findByHotel(hotelBusiness.findById(id));
             if(list == null){
                 headers.add("message", Messages.get("0207"));
             }
@@ -244,7 +246,7 @@ public class QuartoCtrl {
         return new ResponseEntity<List<Quarto>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/paginator")
     public ResponseEntity<Page<Quarto>> paginator(Pageable pageable){
         HttpHeaders headers = new HttpHeaders();
@@ -261,6 +263,5 @@ public class QuartoCtrl {
         }
         return new ResponseEntity<Page<Quarto>>(list, headers, status);
     }
-
 
 }

@@ -1,1 +1,17 @@
-<p>hotel-form works!</p>
+<mat-card class="card">
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <form>
+        <mat-form-field>
+            <input matInput placeholder= "Nome do Hotel" name= "nmHotel" [(ngModel)]="hotel.nmHotel">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder= "Endereço do Hotel" name= "enderecoHotel" [(ngModel)]="hotel.enderecoHotel">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder= "Quantidade de estrelas do Hotel" name= "qtdEstrelas" [(ngModel)]="hotel.qtdEstrelas">
+        </mat-form-field>
+    </form>
+
+    <button mat-stroked-button color="warn" class="button-new" routerLink="/hoteis/"> Voltar</button>
+    <button mat-raised-button color="primary" class="button-new" (click) = "salvar()"> Cadastrar</button>
+</mat-card>

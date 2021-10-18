@@ -10,13 +10,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "hospedes")
 public class HospedeCtrl {
@@ -24,7 +25,7 @@ public class HospedeCtrl {
     @Autowired
     HospedeBusiness business;
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<List<Hospede>> findAll(){
         HttpHeaders headers = new HttpHeaders();
@@ -44,7 +45,7 @@ public class HospedeCtrl {
         return new ResponseEntity<List<Hospede>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Hospede> findById(@PathVariable Integer id) {
         HttpHeaders headers = new HttpHeaders();
@@ -63,7 +64,7 @@ public class HospedeCtrl {
         return new ResponseEntity<Hospede>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Hospede> insert(@RequestBody Hospede hospede) {
         HttpHeaders headers = new HttpHeaders();
@@ -83,7 +84,7 @@ public class HospedeCtrl {
         return new ResponseEntity<Hospede>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public ResponseEntity<Hospede> update(@RequestBody Hospede hospede) {
         HttpHeaders headers = new HttpHeaders();
@@ -103,7 +104,7 @@ public class HospedeCtrl {
         return new ResponseEntity<Hospede>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
@@ -120,7 +121,7 @@ public class HospedeCtrl {
         return new ResponseEntity<Void>(headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/nome/{nomeHospede}")
     public ResponseEntity<List<Hospede>> findByNomeHospede(@PathVariable String nomeHospede){
         HttpHeaders headers = new HttpHeaders();
@@ -140,7 +141,7 @@ public class HospedeCtrl {
         return new ResponseEntity<List<Hospede>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/dtnascimento/{str}")
     public ResponseEntity<List<Hospede>> findByDtNascimento(@PathVariable String str){
         HttpHeaders headers = new HttpHeaders();
@@ -161,7 +162,7 @@ public class HospedeCtrl {
         return new ResponseEntity<List<Hospede>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/cpf/{str}")
     public ResponseEntity<List<Hospede>> findByCPF(@PathVariable String str){
         HttpHeaders headers = new HttpHeaders();
@@ -181,7 +182,7 @@ public class HospedeCtrl {
         return new ResponseEntity<List<Hospede>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/paginator")
     public ResponseEntity<Page<Hospede>> paginator(Pageable pageable){
         HttpHeaders headers = new HttpHeaders();

@@ -1,3 +1,57 @@
-<p>hospede-list works!</p>
+<mat-card class ="example-card mat-elevation-z3">
+    <button mat-raised-button color="primary" class="button-new" routerLink="/hospedes/form"> Novo Hospede</button>
+    <mat-card-header>
+        <mat-card-title> Hospedes</mat-card-title>
+        <mat-card-subtitle> Lista de hospedes cadastrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-<button mat-button color="primary" routerLink="/hospedes/form"> Novo Hospede</button>
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let hospede"> {{hospede.idHospede}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="cpf">
+                <th mat-header-cell *matHeaderCellDef> CPF </th>
+                <td mat-cell *matCellDef="let hospede"> {{hospede.cpf}} </td>
+              </ng-container>
+          
+            <ng-container matColumnDef="nomeHospede">
+                <th mat-header-cell *matHeaderCellDef> Nome do hospede </th>
+                <td mat-cell *matCellDef="let hospede"> {{hospede.nomeHospede}} </td>
+              </ng-container>
+
+          
+            <ng-container matColumnDef="dtNascimento">
+              <th mat-header-cell *matHeaderCellDef> Data de Nascimento </th>
+              <td mat-cell *matCellDef="let hospede"> {{hospede.dtNascimento}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+                <th mat-header-cell *matHeaderCellDef> Ações </th>
+                <td mat-cell *matCellDef="let hospede">
+                  <a routerLink="/hospedes/{{hospede.idHospede}}" class="edit">
+                    <button mat-icon-button color="primary">
+                      <mat-icon>edit</mat-icon>
+                    </button>
+                  </a>
+                  <button mat-icon-button color="warn" (click) = "delete(hospede)">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </td>
+              </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator 
+                        [pageSizeOptions]="[10, 25, 50]" 
+                        showFirstLastButtons
+                        aria-label="Selecione a pagina de quartos"></mat-paginator>
+    </mat-card-content>
+</mat-card>

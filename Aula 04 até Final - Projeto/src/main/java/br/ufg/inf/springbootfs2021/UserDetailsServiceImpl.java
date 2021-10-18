@@ -1,3 +1,4 @@
+/*
 package br.ufg.inf.springbootfs2021;
 
 import br.ufg.inf.springbootfs2021.entities.Usuario;
@@ -25,3 +26,5 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 }
 
+
+ */

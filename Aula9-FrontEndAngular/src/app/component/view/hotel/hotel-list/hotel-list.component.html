@@ -1,3 +1,56 @@
-<p>hotel-list works!</p>
+<mat-card class ="example-card mat-elevation-z3">
+    <button mat-raised-button color="primary" class="button-new" routerLink="/hoteis/form"> Novo Hotel</button>
+    <mat-card-header>
+        <mat-card-title> Hoteis</mat-card-title>
+        <mat-card-subtitle> Lista de hoteis cadastrados</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-<button mat-button color="primary" routerLink="/hoteis/form"> Novo Hotel</button>
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+          
+            <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef> ID </th>
+              <td mat-cell *matCellDef="let hotel"> {{hotel.idHotel}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="nome">
+              <th mat-header-cell *matHeaderCellDef> Nome do hotel </th>
+              <td mat-cell *matCellDef="let hotel"> {{hotel.nmHotel}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="endereco">
+              <th mat-header-cell *matHeaderCellDef> Endereço </th>
+              <td mat-cell *matCellDef="let hotel"> {{hotel.enderecoHotel}} </td>
+            </ng-container>
+          
+            <ng-container matColumnDef="estrelas">
+              <th mat-header-cell *matHeaderCellDef> Qtd Estrelas </th>
+              <td mat-cell *matCellDef="let hotel"> {{hotel.qtdEstrelas}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="acoes">
+              <th mat-header-cell *matHeaderCellDef> Ações </th>
+              <td mat-cell *matCellDef="let hotel">
+                <a routerLink="/hoteis/{{hotel.idHotel}}" class="edit">
+                  <button mat-icon-button color="primary">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                </a>
+                <button mat-icon-button color="warn" (click) = "delete(hotel)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+          
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+
+          <mat-paginator 
+                        [pageSizeOptions]="[10, 25, 50]" 
+                        showFirstLastButtons
+                        aria-label="Selecione a pagina de hoteis"></mat-paginator>
+    </mat-card-content>
+</mat-card>

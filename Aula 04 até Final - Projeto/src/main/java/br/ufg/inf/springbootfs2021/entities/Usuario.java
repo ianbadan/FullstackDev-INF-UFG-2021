@@ -15,23 +15,23 @@ public class Usuario {
 
     private String senha;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="usuario_regra",
-            joinColumns =  @JoinColumn(name="login", referencedColumnName = "login"),
-            inverseJoinColumns = @JoinColumn(name="regra", referencedColumnName = "regra")
-    )
-    private List<Regra> regras;
+    //@ManyToMany(fetch = FetchType.EAGER)
+    //@JoinTable(name="usuario_regra",
+    //        joinColumns =  @JoinColumn(name="login", referencedColumnName = "login"),
+    //        inverseJoinColumns = @JoinColumn(name="regra", referencedColumnName = "regra")
+    //)
+    //private List<Regra> regras;
 
 
     public Usuario() {
         super();
     }
-    public Usuario(String login, String nome, String senha,List<Regra> regras) {
+    public Usuario(String login, String nome, String senha) {
         super();
         this.login = login;
         this.nome = nome;
         this.senha = senha;
-        this.regras = regras;
+        //this.regras = regras;
     }
 
     public String getLogin() {
@@ -58,6 +58,7 @@ public class Usuario {
         this.senha = senha;
     }
 
+    /*
     public List<Regra> getRegras() {
         return regras;
     }
@@ -65,9 +66,10 @@ public class Usuario {
     public void setRegras(List<Regra> regras) {
         this.regras = regras;
     }
+     */
 
     @Override
     public String toString() {
-        return "Nome: " + this.nome + " Login: " + this.login + " Senha: " + this.senha + " Regras: " + regras.get(0);
+        return "Nome: " + this.nome + " Login: " + this.login + " Senha: " + this.senha;
     }
 }

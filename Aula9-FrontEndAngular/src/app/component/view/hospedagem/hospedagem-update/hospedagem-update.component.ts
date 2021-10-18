@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hospedagem } from 'src/app/model/hospedagem.model';
 import { Hospede } from 'src/app/model/hospede.model';
 import { Quarto } from 'src/app/model/quarto.model';
@@ -8,13 +8,13 @@ import { HospedeService } from 'src/app/service/hospede.service';
 import { QuartoService } from 'src/app/service/quarto.service';
 
 @Component({
-  selector: 'app-hospedagem-form',
-  templateUrl: './hospedagem-form.component.html',
-  styleUrls: ['./hospedagem-form.component.css']
+  selector: 'app-hospedagem-update',
+  templateUrl: './../hospedagem-form/hospedagem-form.component.html',
+  styleUrls: ['./../hospedagem-form/hospedagem-form.component.css']
 })
-export class HospedagemFormComponent implements OnInit {
+export class HospedagemUpdateComponent implements OnInit {
 
-  titulo: string = "Cadastro de uma nova hospedagem";
+  titulo: string = "Atualização de uma nova hospedagem";
 
   hospedagem: Hospedagem = {
     quarto: <Quarto>{},
@@ -30,7 +30,8 @@ export class HospedagemFormComponent implements OnInit {
     private hospedagemService: HospedagemService,
     private quartoService: QuartoService,
     private hospedeService: HospedeService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +41,12 @@ export class HospedagemFormComponent implements OnInit {
     this.hospedeService.findAll().subscribe(hospedes =>{
       this.hospedes = hospedes;
     })
+    let id = this.route.snapshot.paramMap.get('id');
+    if(id != null){
+        this.hospedagemService.findById(id).subscribe(hospedagem =>{
+            this.hospedagem=hospedagem;
+        })
+    }
   }
 
   salvar(): void{

@@ -1,4 +1,5 @@
-package br.ufg.inf.springbootfs2021.entities;
+/*
+ackage br.ufg.inf.springbootfs2021.entities;
 
 import java.io.Serializable;
 import java.util.List;
@@ -45,3 +46,4 @@ public class Regra implements Serializable{
     }
 
 }
+ */

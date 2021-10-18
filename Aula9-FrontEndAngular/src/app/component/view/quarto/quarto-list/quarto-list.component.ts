@@ -3,33 +3,30 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ConfirmDeleteComponent } from 'src/app/component/template/confirm-delete/confirm-delete.component';
-import { Hotel } from 'src/app/model/hotel.model';
-import { HotelService } from 'src/app/service/hotel.service';
-
+import { Quarto } from 'src/app/model/quarto.model';
+import { QuartoService } from 'src/app/service/quarto.service';
 
 @Component({
-  selector: 'app-hotel-list',
-  templateUrl: './hotel-list.component.html',
-  styleUrls: ['./hotel-list.component.css']
+  selector: 'app-quarto-list',
+  templateUrl: './quarto-list.component.html',
+  styleUrls: ['./quarto-list.component.css']
 })
-export class HotelListComponent implements OnInit {
+export class QuartoListComponent implements OnInit {
 
-  hoteis: Hotel[] = [];
-  displayedColumns: string[] = ["id", "nome", "endereco", "estrelas", "acoes"];
-  dataSource!: MatTableDataSource<Hotel>;
+  quartos: Quarto[] = [];
+  displayedColumns: string[] = ["id", "nrQuarto", "nomeHotel", "categoria", "diaria", "acoes"];
+  dataSource!: MatTableDataSource<Quarto>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor( 
-    private service: HotelService,
+  constructor(
+    private service: QuartoService,
     private dialog: MatDialog
-
   ) { }
 
   atualizarDados(): void{
-    console.log("Hotel initiated");
-    this.service.findAll().subscribe(hoteis => {
-      this.dataSource = new MatTableDataSource(hoteis);
+    this.service.findAll().subscribe(quartos =>{
+      this.dataSource = new MatTableDataSource(quartos);
       this.dataSource.paginator = this.paginator;
     })
   }
@@ -38,11 +35,11 @@ export class HotelListComponent implements OnInit {
     this.atualizarDados();
   }
 
-  delete(hotel: Hotel): void{
+  delete(quarto: Quarto): void{
     const dialogRef = this.dialog.open(ConfirmDeleteComponent, {
       data: {
-        message: 'Deseja realmente excluir o/a ' + hotel.nmHotel + "?",
-        buttonText: {
+        message: 'Deseja realmente excluir o quarto' + quarto.nrQuarto + '?',
+        buttonText:{
           ok: "Excluir",
           cancel: "Desistir"
         }
@@ -50,11 +47,12 @@ export class HotelListComponent implements OnInit {
     })
     dialogRef.afterClosed().subscribe((confirm: boolean) =>{
       if(confirm){
-        this.service.delete(hotel).subscribe(() => {
-          this.service.showMessage("Hotel excluido com sucesso");
+        this.service.delete(quarto).subscribe(() =>{
+          this.service.showMessage("Quarto excluido com sucesso");
           this.atualizarDados();
-        });
+        })
       }
     })
   }
+
 }

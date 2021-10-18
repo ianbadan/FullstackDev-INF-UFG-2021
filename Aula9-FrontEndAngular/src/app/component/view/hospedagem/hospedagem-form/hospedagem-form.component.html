@@ -1,1 +1,37 @@
-<p>hospedagem-form works!</p>
+<mat-card class="card">
+    <mat-card-title>{{titulo}}</mat-card-title>
+    <form>
+        <mat-form-field appearance="fill">
+            <mat-label> -- Seleciona o quarto --</mat-label>
+            <mat-select [(value)]="hospedagem.quarto.idQuarto" name="quarto">
+                <mat-option *ngFor="let q of quartos" [value]="q.idQuarto">
+                   Quarto Nº {{q.nrQuarto}} - {{q.hotel.nmHotel}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label> -- Seleciona o hospede</mat-label>
+            <mat-select [(value)]="hospedagem.hospede.idHospede" name="hospede">
+                <mat-option *ngFor="let h of hospedes" [value]="h.idHospede">
+                    {{h.nomeHospede}} - CPF: {{h.cpf}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="datepicker">
+            <mat-label>Data de checkin - Data de checkout</mat-label>
+            <mat-date-range-input [rangePicker] = "picker">
+                <input matInput matStartDate placeholder="Data Checkin" name="dtCheckin" [(ngModel)]="hospedagem.dtCheckin">
+                <input matInput matEndDate placeholder="Data Checkout" name="dtCheckout" [(ngModel)]="hospedagem.dtCheckout">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
+
+    </form>
+
+    <button mat-stroked-button color="warn" class="button-new" routerLink="/hospedagens/"> Voltar</button>
+    <button mat-raised-button color="primary" class="button-new" (click) = "salvar()"> Cadastrar</button>
+
+</mat-card>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Hospede } from 'src/app/model/hospede.model';
+import { HospedeService } from 'src/app/service/hospede.service';
+import { NgxMaskModule } from 'ngx-mask';
 
 @Component({
   selector: 'app-hospede-form',
@@ -7,9 +11,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HospedeFormComponent implements OnInit {
 
-  constructor() { }
+  titulo: string = "Cadastro de um novo hospede";
+
+  hospede: Hospede = {
+    nomeHospede : "",
+    dtNascimento: new Date,
+    cpf : ""
+  };
+  
+
+  constructor(
+    private service: HospedeService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
 
+  salvar(): void{
+    this.service.create(this.hospede).subscribe(() =>{
+      this.service.showMessage("Hospede cadastrado com sucesso!");
+      this.router.navigate(['/hospedes']);
+    })
+  }
 }

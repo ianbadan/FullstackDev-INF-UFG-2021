@@ -14,13 +14,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
+//import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin
 @RestController
 @RequestMapping(value = "hospedagens")
 public class HospedagemCtrl {
@@ -33,7 +34,7 @@ public class HospedagemCtrl {
     @Autowired
     QuartoBusiness quartoBusiness;
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<List<Hospedagem>> findAll(){
         HttpHeaders headers = new HttpHeaders();
@@ -52,7 +53,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<List<Hospedagem>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Hospedagem> findById(@PathVariable Integer id) {
         HttpHeaders headers = new HttpHeaders();
@@ -71,7 +72,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<Hospedagem>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Hospedagem> insert(@RequestBody Hospedagem hospedagem) {
         HttpHeaders headers = new HttpHeaders();
@@ -89,7 +90,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<Hospedagem>(hospedagem, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public ResponseEntity<Hospedagem> update(@RequestBody Hospedagem hospedagem) {
         HttpHeaders headers = new HttpHeaders();
@@ -107,7 +108,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<Hospedagem>(hospedagem, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
@@ -122,7 +123,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<Void>(headers,status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/quarto/{id}")
     public ResponseEntity<List<Hospedagem>> findByIdQuarto(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
@@ -141,7 +142,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<List<Hospedagem>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/hospede/{id}")
     public ResponseEntity<List<Hospedagem>> findByIdHospede(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
@@ -160,7 +161,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<List<Hospedagem>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/checkin/{str}")
     public ResponseEntity<List<Hospedagem>> findByDataCheckin(@PathVariable String str){
         HttpHeaders headers = new HttpHeaders();
@@ -179,7 +180,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<List<Hospedagem>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/checkout/{str}")
     public ResponseEntity<List<Hospedagem>> findByDataCheckout(@PathVariable String str){
         HttpHeaders headers = new HttpHeaders();
@@ -198,7 +199,7 @@ public class HospedagemCtrl {
         return new ResponseEntity<List<Hospedagem>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/paginator")
     public ResponseEntity<Page<Hospedagem>> paginator(Pageable pageable){
         HttpHeaders headers = new HttpHeaders();

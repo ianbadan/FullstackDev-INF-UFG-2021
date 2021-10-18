@@ -13,17 +13,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+//import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.*;
 
-
+@CrossOrigin
 @RestController
 @RequestMapping(value="hoteis")
 public class HotelCtrl {
@@ -31,7 +24,7 @@ public class HotelCtrl {
     @Autowired
     private HotelBusiness business;
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping
     public ResponseEntity<List<Hotel>> findAll(){
         HttpHeaders headers = new HttpHeaders();
@@ -49,7 +42,7 @@ public class HotelCtrl {
         return new ResponseEntity<List<Hotel>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/{id}")
     public ResponseEntity<Hotel> findById(@PathVariable Integer id){
         Hotel retorno = new Hotel();
@@ -68,7 +61,7 @@ public class HotelCtrl {
         return new ResponseEntity<Hotel>(retorno, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<Hotel> insert(@RequestBody Hotel hotel){
         HttpHeaders headers = new HttpHeaders();
@@ -87,7 +80,7 @@ public class HotelCtrl {
         return new ResponseEntity<Hotel>(hotel, headers, status);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    //@PreAuthorize("hasRole('ADMIN')")
     @PutMapping
     public ResponseEntity<Hotel> update(@RequestBody Hotel hotel){
 
@@ -109,14 +102,15 @@ public class HotelCtrl {
 
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Integer id){
         HttpHeaders headers = new HttpHeaders();
-        HttpStatus status = HttpStatus.NO_CONTENT;
+        HttpStatus status = HttpStatus.OK;
 
         try {
             business.delete(id);
+            headers.add("message", Messages.get("0105"));
         } catch (Exception e) {
             headers.add("message", Messages.get("0106"));
             status = HttpStatus.INTERNAL_SERVER_ERROR;
@@ -124,7 +118,7 @@ public class HotelCtrl {
         return new ResponseEntity<Void>(headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/nome/{str}")
     public ResponseEntity<List<Hotel>> findByNome(@PathVariable String str){
         HttpHeaders headers = new HttpHeaders();
@@ -143,7 +137,7 @@ public class HotelCtrl {
         return new ResponseEntity<List<Hotel>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/endereco/{str}")
     public ResponseEntity<List<Hotel>> findByEndereco(@PathVariable String str) {
         HttpHeaders headers = new HttpHeaders();
@@ -162,7 +156,7 @@ public class HotelCtrl {
         return new ResponseEntity<List<Hotel>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/estrela/{qtd}")
     public ResponseEntity<List<Hotel>> findByQtdEstrelas(@PathVariable Integer qtd){
         HttpHeaders headers = new HttpHeaders();
@@ -181,7 +175,7 @@ public class HotelCtrl {
         return new ResponseEntity<List<Hotel>>(list, headers, status);
     }
 
-    @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+    //@PreAuthorize("hasAnyRole('USER', 'ADMIN')")
     @GetMapping("/paginator")
     public ResponseEntity<Page<Hotel>> paginator(Pageable pageable){
         HttpHeaders headers = new HttpHeaders();

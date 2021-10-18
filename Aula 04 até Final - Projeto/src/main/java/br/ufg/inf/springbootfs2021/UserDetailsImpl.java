@@ -1,3 +1,4 @@
+/*
 package br.ufg.inf.springbootfs2021;
 
 import br.ufg.inf.springbootfs2021.entities.Regra;
@@ -64,3 +65,5 @@ public class UserDetailsImpl implements UserDetails{
     }
 
 }
+
+ */
